@@ -8,3 +8,12 @@ enum class EMain_Menu
 	Field,
 	Exit
 };
+
+enum class EPlayer_Menu
+{
+	None,
+	Status,
+	Inventory,
+	Skill,
+	Exit
+};

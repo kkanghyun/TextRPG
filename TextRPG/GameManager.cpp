@@ -1,5 +1,7 @@
 #include "GameManager.h"
 
+#include "PlayerManager.h"
+
 DEFINITION_SINGLETON(CGameManager)
 
 CGameManager::CGameManager() : 
@@ -15,15 +17,19 @@ CGameManager::~CGameManager()
 
 bool CGameManager::init()
 {
-	m_gameEnable = true;
+	if (!CPlayerManager::getInst()->init()) {
+		return false;
+	}
 
-	int* p = new int;
+	m_gameEnable = true;
 
 	return true;
 }
 
 void CGameManager::run()
 {
+	CPlayerManager::getInst()->setPlayerName();
+
 	while (m_gameEnable) {
 		EMain_Menu input = menu();
 
@@ -32,20 +38,21 @@ void CGameManager::run()
 		case EMain_Menu::None:
 			continue;
 		case EMain_Menu::Player:
-			cout << "플레이어" << '\n';
+			CPlayerManager::getInst()->setEnable(true);
+			CPlayerManager::getInst()->run();
 			break;
 		case EMain_Menu::Store:
 			cout << "상점" << '\n';
+			system("pause");
 			break;
 		case EMain_Menu::Field:
 			cout << "사냥터" << '\n';
+			system("pause");
 			break;
 		case EMain_Menu::Exit:
 			m_gameEnable = false;
 			break;
 		}
-
-		system("pause");
 	}
 }
 
@@ -62,15 +69,18 @@ EMain_Menu CGameManager::menu()
 	cout << "input: ";
 	cin >> str;
 
-	if (str.length() > 1)
+	if (str.length() > 1) {
 		return EMain_Menu::None;
+	}
 
-	if (str.front() - '0' < static_cast<int>(EMain_Menu::Player) || str.front() - '0' > static_cast<int>(EMain_Menu::Exit))
+	if (str.front() - '0' <= static_cast<int>(EMain_Menu::None) || str.front() - '0' > static_cast<int>(EMain_Menu::Exit)) {
 		return EMain_Menu::None;
+	}
 
 	int input = stoi(str);
-	if (input < static_cast<int>(EMain_Menu::Player) || input > static_cast<int>(EMain_Menu::Exit))
+	if (input <= static_cast<int>(EMain_Menu::None) || input > static_cast<int>(EMain_Menu::Exit)) {
 		return EMain_Menu::None;
+	}
 
 	return static_cast<EMain_Menu>(input);
 }
