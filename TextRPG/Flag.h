@@ -17,3 +17,12 @@ enum class EPlayer_Menu
 	Skill,
 	Exit
 };
+
+enum class EField_Menu
+{
+	None,
+	Field_1,
+	Field_2,
+	Field_3,
+	Exit
+};

@@ -1,6 +1,7 @@
 #include "GameManager.h"
 
 #include "PlayerManager.h"
+#include "FieldManager.h"
 
 DEFINITION_SINGLETON(CGameManager)
 
@@ -13,11 +14,17 @@ CGameManager::CGameManager() :
 
 CGameManager::~CGameManager()
 {
+	CFieldManager::getInst()->destroyInst();
+	CPlayerManager::getInst()->destroyInst();
 }
 
 bool CGameManager::init()
 {
 	if (!CPlayerManager::getInst()->init()) {
+		return false;
+	}
+
+	if (!CFieldManager::getInst()->init()) {
 		return false;
 	}
 
@@ -46,8 +53,8 @@ void CGameManager::run()
 			system("pause");
 			break;
 		case EMain_Menu::Field:
-			cout << "»ç³ÉÅÍ" << '\n';
-			system("pause");
+			CFieldManager::getInst()->setEnable(true);
+			CFieldManager::getInst()->run();
 			break;
 		case EMain_Menu::Exit:
 			m_gameEnable = false;
