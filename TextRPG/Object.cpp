@@ -1,17 +1,7 @@
 #include "Object.h"
 
 CObject::CObject() :
-	m_name(""),
-	m_hp{},
-	m_hpMax{},
-	m_mp{},
-	m_mpMax{},
-	m_level{},
-	m_exp{},
-	m_expMax{},
-	m_att{},
-	m_def{},
-	m_gold{}
+	m_info()
 {
 }
 
@@ -19,137 +9,155 @@ CObject::~CObject()
 {
 }
 
-void CObject::init()
+bool CObject::init()
 {
-	m_name = "";
-	m_hp = 0;
-	m_hpMax = 0;
-	m_mp = 0;
-	m_mpMax = 0;
-	m_level = 0;
-	m_exp = 0;
-	m_expMax = 0;
-	m_att = 0;
-	m_def = 0;
-	m_gold = 0;
+	return true;
+}
+
+void CObject::render()
+{
 }
 
 void CObject::setName(const string_view name)
 {
-	m_name = name;
+	m_info.name = name;
 }
 
 void CObject::setHp(int val)
 {
-	m_hp = val;
+	m_info.hp = val;
 }
 
 void CObject::setHpMax(int val)
 {
-	m_hpMax = val;
+	m_info.hpMax = val;
 }
 
 void CObject::setMp(int val)
 {
-	m_mp = val;
+	m_info.mp = val;
 }
 
 void CObject::setMpMax(int val)
 {
-	m_mpMax = val;
+	m_info.mpMax = val;
 }
 
 void CObject::setLevel(int val)
 {
-	m_level = val;
+	m_info.level = val;
 }
 
 void CObject::setExp(int val)
 {
-	m_exp = val;
+	m_info.exp = val;
 }
 
 void CObject::setExpMax(int val)
 {
-	m_expMax = val;
+	m_info.expMax = val;
 }
 
 void CObject::setAtt(int val)
 {
-	m_att = val;
+	m_info.att = val;
 }
 
 void CObject::setDef(int val)
 {
-	m_def = val;
+	m_info.def = val;
 }
 
 void CObject::setGold(int val)
 {
-	m_gold = val;
+	m_info.gold = val;
+}
+
+void CObject::setEnable(bool enable)
+{
+	m_info.enable = enable;
+}
+
+void CObject::death()
+{
+	m_info.enable = true;
 }
 
 const string& CObject::getName() const
 {
-	return m_name;
+	return m_info.name;
 }
 
-int CObject::gethp() const
+int CObject::getHp() const
 {
-	return m_hp;
+	return m_info.hp;
 }
 
-int CObject::gethpMax() const
+int CObject::getHpMax() const
 {
-	return m_hpMax;
+	return m_info.hpMax;
 }
 
-int CObject::getmp() const
+int CObject::getMp() const
 {
-	return m_mp;
+	return m_info.mp;
 }
 
-int CObject::getmpMax() const
+int CObject::getMpMax() const
 {
-	return m_mpMax;
+	return m_info.mpMax;
 }
 
 int CObject::getLevel() const
 {
-	return m_level;
+	return m_info.level;
 }
 
 int CObject::getExp() const
 {
-	return m_exp;
+	return m_info.exp;
 }
 
 int CObject::getExpMax() const
 {
-	return m_expMax;
+	return m_info.expMax;
 }
 
 int CObject::getAtt() const
 {
-	return m_att;
+	return m_info.att;
 }
 
 int CObject::getDef() const
 {
-	return m_def;
+	return m_info.def;
 }
 
 int CObject::getGold() const
 {
-	return m_gold;
+	return m_info.gold;
+}
+
+bool CObject::isDeath() const
+{
+	return m_info.enable;
 }
 
 void CObject::addExp(int val)
 {
-	m_exp += val;
+	m_info.exp += val;
 }
 
 void CObject::addGold(int val)
 {
-	m_gold += val;
+	m_info.gold += val;
+}
+
+void CObject::Damaged(int val)
+{
+	m_info.hp -= val;
+
+	if (m_info.hp <= 0) {
+		m_info.hp = 0;
+	}
 }

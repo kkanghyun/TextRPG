@@ -16,6 +16,7 @@ bool CPlayerManager::init()
 {
 	if (!m_player) {
 		m_player = make_shared<CPlayer>();
+		m_player->init();
 	}
 
 	return true;
@@ -78,20 +79,8 @@ EPlayer_Menu CPlayerManager::menu()
 void CPlayerManager::outputPlayerStatus()
 {
 	system("cls");
-
-	cout << format("{:10}", "이름: ") << m_player->getName() << '\n';
-	cout << format("{:10}", "HP: ") << m_player->gethp() << '\n';
-	cout << format("{:10}", "HP_MAX: ") << m_player->gethpMax() << '\n';
-	cout << format("{:10}", "MP: ") << m_player->getmp() << '\n';
-	cout << format("{:10}", "MP_MAX: ") << m_player->getmpMax() << '\n';
-	cout << format("{:10}", "Level: ") << m_player->getLevel() << '\n';
-	cout << format("{:10}", "Exp: ") << m_player->getExp() << '\n';
-	cout << format("{:10}", "Exp_MAX: ") << m_player->getExpMax() << '\n';
-	cout << format("{:10}", "공격력: ") << m_player->getAtt() << '\n';
-	cout << format("{:10}", "방어력: ") << m_player->getDef() << '\n';
-	cout << format("{:10}", "골드: ") << m_player->getGold() << '\n';
+	m_player->render();
 	cout << '\n';
-
 	system("pause");
 }
 

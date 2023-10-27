@@ -2,6 +2,7 @@
 
 #include "PlayerManager.h"
 #include "FieldManager.h"
+#include "MonsterManager.h"
 
 DEFINITION_SINGLETON(CGameManager)
 
@@ -10,12 +11,14 @@ CGameManager::CGameManager() :
 	m_menu(EMain_Menu::None)
 {
 	_CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF);	// 메모리 릭 체크
+	//_CrtSetBreakAlloc(178);
 }
 
 CGameManager::~CGameManager()
 {
 	CFieldManager::getInst()->destroyInst();
 	CPlayerManager::getInst()->destroyInst();
+	CMonsterManager::getInst()->destroyInst();
 }
 
 bool CGameManager::init()
@@ -25,6 +28,10 @@ bool CGameManager::init()
 	}
 
 	if (!CFieldManager::getInst()->init()) {
+		return false;
+	}
+
+	if (!CMonsterManager::getInst()->init()) {
 		return false;
 	}
 

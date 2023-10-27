@@ -26,3 +26,21 @@ enum class EField_Menu
 	Field_3,
 	Exit
 };
+
+enum class EField_PlayerInput
+{
+	None,
+	Attack,
+	Skill,
+	Item,
+	Escape
+};
+
+enum class EField_MonsterInput
+{
+	None,
+	Attack,
+	Skill,
+	Item,
+	Escape
+};

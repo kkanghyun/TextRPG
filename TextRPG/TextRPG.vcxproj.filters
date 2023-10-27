@@ -25,14 +25,26 @@
     <Filter Include="01. Mgr\01. Player">
       <UniqueIdentifier>{2fec33d4-456f-48de-8100-4250b623ab1f}</UniqueIdentifier>
     </Filter>
-    <Filter Include="01. Mgr\02. Field">
-      <UniqueIdentifier>{7ac172b7-706e-44d8-98fb-bcc9ff4eb3df}</UniqueIdentifier>
-    </Filter>
     <Filter Include="03. Field">
       <UniqueIdentifier>{c6b9ea05-2e29-449a-8432-98ac7cd0f55e}</UniqueIdentifier>
     </Filter>
     <Filter Include="02. Obj\02. Monster">
       <UniqueIdentifier>{1325cc71-873a-4766-a720-8718a24db53e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="01. Mgr\03. Field">
+      <UniqueIdentifier>{7ac172b7-706e-44d8-98fb-bcc9ff4eb3df}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="01. Mgr\02. Monster">
+      <UniqueIdentifier>{db9d70d6-622b-463c-ae80-3e2e9d9c9c38}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02. Obj\02. Monster\01. Slime">
+      <UniqueIdentifier>{cf74c81d-44b0-4d79-8939-1a28db96b968}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02. Obj\02. Monster\02. Orc">
+      <UniqueIdentifier>{49ca661a-44cf-408c-9b97-5377fce8c151}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02. Obj\02. Monster\03. Basilisk">
+      <UniqueIdentifier>{34038d8b-3905-4674-b238-75ca59428660}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -52,13 +64,25 @@
       <Filter>01. Mgr\01. Player</Filter>
     </ClCompile>
     <ClCompile Include="FieldManager.cpp">
-      <Filter>01. Mgr\02. Field</Filter>
+      <Filter>01. Mgr\03. Field</Filter>
     </ClCompile>
     <ClCompile Include="Field.cpp">
       <Filter>03. Field</Filter>
     </ClCompile>
     <ClCompile Include="Monster.cpp">
       <Filter>02. Obj\02. Monster</Filter>
+    </ClCompile>
+    <ClCompile Include="MonsterManager.cpp">
+      <Filter>01. Mgr\02. Monster</Filter>
+    </ClCompile>
+    <ClCompile Include="Slime.cpp">
+      <Filter>02. Obj\02. Monster\01. Slime</Filter>
+    </ClCompile>
+    <ClCompile Include="Basilisk.cpp">
+      <Filter>02. Obj\02. Monster\03. Basilisk</Filter>
+    </ClCompile>
+    <ClCompile Include="Orc.cpp">
+      <Filter>02. Obj\02. Monster\02. Orc</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -84,13 +108,25 @@
       <Filter>01. Mgr\01. Player</Filter>
     </ClInclude>
     <ClInclude Include="FieldManager.h">
-      <Filter>01. Mgr\02. Field</Filter>
+      <Filter>01. Mgr\03. Field</Filter>
     </ClInclude>
     <ClInclude Include="Field.h">
       <Filter>03. Field</Filter>
     </ClInclude>
     <ClInclude Include="Monster.h">
       <Filter>02. Obj\02. Monster</Filter>
+    </ClInclude>
+    <ClInclude Include="MonsterManager.h">
+      <Filter>01. Mgr\02. Monster</Filter>
+    </ClInclude>
+    <ClInclude Include="Slime.h">
+      <Filter>02. Obj\02. Monster\01. Slime</Filter>
+    </ClInclude>
+    <ClInclude Include="Basilisk.h">
+      <Filter>02. Obj\02. Monster\03. Basilisk</Filter>
+    </ClInclude>
+    <ClInclude Include="Orc.h">
+      <Filter>02. Obj\02. Monster\02. Orc</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

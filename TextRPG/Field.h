@@ -5,17 +5,30 @@
 class CField
 {
 private:
-	string name;
-	bool enable;
+	bool m_enable;
+	string m_name;
+
+	class CPlayer* m_player;
+	class CMonster* m_monster;
 
 public:
 	CField();
-	virtual ~CField() = 0;
+	~CField();
 
 public:
-	virtual void init();
+	bool init();
+	void run();
 
 public:
-	void setName();
+	void setEnable(bool enable);
+	void setName(string_view name);
+	void setPlayer(class CPlayer* player);
+	void setMonster(class CMonster* monster);
+
+public:
+	void outputPlayerInfo();
+	void outputMonsterInfo();
+	EField_PlayerInput playerInput();
+	EField_MonsterInput monsterInput();
 };
 

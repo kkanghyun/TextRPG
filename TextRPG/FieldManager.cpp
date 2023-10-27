@@ -1,5 +1,12 @@
 #include "FieldManager.h"
 
+#include "Field.h"
+#include "PlayerManager.h"
+#include "MonsterManager.h"
+#include "Slime.h"
+#include "Orc.h"
+#include "Basilisk.h"
+
 DEFINITION_SINGLETON(CFieldManager)
 
 CFieldManager::CFieldManager() :
@@ -10,10 +17,21 @@ CFieldManager::CFieldManager() :
 
 CFieldManager::~CFieldManager()
 {
+	for (auto it : m_vecField) {
+		if (it)
+			delete it;
+	}
 }
 
 bool CFieldManager::init()
 {
+	CMonster* monster = CMonsterManager::getInst()->CreateMonster<CSlime>();
+	CreateField("필드 1", monster);
+	monster = CMonsterManager::getInst()->CreateMonster<COrc>();
+	CreateField("필드 2", monster);
+	monster = CMonsterManager::getInst()->CreateMonster<CBasilisk>();
+	CreateField("필드 3", monster);
+
 	return true;
 }
 
@@ -27,13 +45,16 @@ void CFieldManager::run()
 		case EField_Menu::None:
 			continue;
 		case EField_Menu::Field_1:
-			cout << "필드 1" << '\n';
+			m_vecField[(int)EField_Menu::Field_1 - 1]->setEnable(true);
+			m_vecField[(int)EField_Menu::Field_1 - 1]->run();
 			break;
 		case EField_Menu::Field_2:
-			cout << "필드 2" << '\n';
+			m_vecField[(int)EField_Menu::Field_2 - 1]->setEnable(true);
+			m_vecField[(int)EField_Menu::Field_2 - 1]->run();
 			break;
 		case EField_Menu::Field_3:
-			cout << "필드 3" << '\n';
+			m_vecField[(int)EField_Menu::Field_3 - 1]->setEnable(true);
+			m_vecField[(int)EField_Menu::Field_3 - 1]->run();
 			break;
 		case EField_Menu::Exit:
 			m_enable = false;
@@ -74,4 +95,15 @@ EField_Menu CFieldManager::menu()
 void CFieldManager::setEnable(bool enable)
 {
 	m_enable = enable;
+}
+
+void CFieldManager::CreateField(string_view name, CMonster* monster)
+{
+	CField* field = new CField;
+	field->init();
+	field->setName(name);
+	CPlayer* player = CPlayerManager::getInst()->getPlayer();
+	field->setPlayer(player);
+	field->setMonster(monster);
+	m_vecField.push_back(field);
 }

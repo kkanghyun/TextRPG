@@ -7,9 +7,9 @@ class CPlayer :
 {
 public:
 	CPlayer();
-	~CPlayer() override;
+	~CPlayer() final;
 
 public:
-	void init() override;
+	bool init() final;
+	void render() final;
 };
-
