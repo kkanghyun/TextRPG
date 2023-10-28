@@ -1,5 +1,7 @@
 #pragma once
 
+/* 각종 플래그를 선언한 헤더파일입니다. */
+
 enum class EMain_Menu
 {
 	None,

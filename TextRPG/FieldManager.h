@@ -4,6 +4,10 @@
 #include "GameInfo.h"
 #include "Monster.h"
 
+/*
+모든 Field 객체의 생성과 소멸을 담당하고 관리하는 클래스입니다.
+여러 사냥터 중 하나를 선택하여 입장하는 메뉴 UI를 담당합니다.
+*/
 class CFieldManager
 {
 private:

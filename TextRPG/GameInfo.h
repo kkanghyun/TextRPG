@@ -1,5 +1,7 @@
 #pragma once
 
+/* 게임에 필요한 각종 헤더파일과 구조체 등이 선언된 헤더파일입니다. */
+
 #include <stdlib.h>
 #include <crtdbg.h>
 #include <iostream>

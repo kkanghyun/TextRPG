@@ -2,6 +2,9 @@
 
 #include "GameInfo.h"
 
+/*
+각종 게임 오브젝트의 부모 (추상)클래스입니다.
+*/
 class CObject
 {
 private:

@@ -4,6 +4,9 @@
 #include "GameInfo.h"
 #include "Monster.h"
 
+/*
+모든 몬스터 객체의 생성과 소멸을 담당하고 관리하는 클래스입니다.
+*/
 class CMonsterManager
 {
 private:

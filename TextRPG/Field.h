@@ -2,6 +2,9 @@
 
 #include "GameInfo.h"
 
+/*
+이 클래스는 플레이어와 몬스터의 전투를 담당합니다.
+*/
 class CField
 {
 private:
@@ -17,6 +20,7 @@ public:
 
 public:
 	bool init();
+	/* 전투 루프 */
 	void run();
 
 public:
